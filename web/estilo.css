@@ -1,0 +1,46 @@
+body{
+  
+    font-family: Arial;
+}
+
+#main-container{
+    margin: 150px;
+    width: 600px;
+    background-color: rgb(8, 5, 41);
+    color: #FFFFFF;
+    padding: 20px;
+
+}
+
+h1{
+    font-weight: bold;
+    text-align: center;
+    color: #FFF87F;
+    font-size: 50px !important;
+    text-shadow: 4px, 4px, 5px rgba(0,0,0,0,5); 
+    font-variant: all-petite-caps;
+}
+
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #FFF87F;
+    border-radius: 4px;
+    background-color: rgb(240, 235, 230);
+    color: rgb(14, 11, 11);  
+    font-size: 20px;
+  }
+
+  
+  button{
+    text-decoration: none;
+    padding: 15px;
+    font-weight: 600;
+    font-size: 20px;
+    color: black;
+    background-color: #FFF87F;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+  }
