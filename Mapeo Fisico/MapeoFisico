@@ -1,0 +1,140 @@
+//FALTA CREAR LA TABLA USUARIOS PERO LO DEMAS CHIDO Xd
+
+
+CREATE TABLE Revista (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	editor VARCHAR(40) NOT NULL,
+	titulos_subidos INT NOT NULL,
+	no_suscriptores INT NOT NULL,
+	descripcion VARCHAR(100) NOT NULL,                             //hacer la descripcion unica	
+	titulo_revista VARCHAR(40) NOT NULL,
+	cuota_suscripcion INT NOT NULL,
+	no_likes INT NOT NULL,
+	INDEX (editor),
+	FOREIGN KEY (editor) REFERENCES Usuarios(nombre_usuario)
+);
+
+CREATE TABLE Suscriptor (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nombre_usuario VARCHAR(40) NOT NULL,
+	id_revista INT NOT NULL,
+	fecha_suscripcion DATE NOT NULL,
+	estado_suscripcion VARCHAR(40) NOT NULL,
+	ultimo_pago DATE NOT NULL,
+	INDEX (nombre_usuario),
+	INDEX (id_revista),
+	FOREIGN KEY (nombre_usuario) REFERENCES Usuarios(nombre_usuario),
+	FOREIGN KEY (id_revista) REFERENCES Revista(id)
+);
+
+CREATE TABLE Editor (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	editor VARCHAR(40) NOT NULL,
+	id_revista INT NOT NULL,
+	INDEX (editor),
+	INDEX (id_revista),
+	FOREIGN KEY (editor) REFERENCES Usuarios(nombre_usuario),
+	FOREIGN KEY (id_revista) REFERENCES Revista(id)
+);
+
+CREATE TABLE Categorias (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	descripcion VARCHAR(70) NOT NULL
+);
+
+CREATE TABLE Tags (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	descripcion VARCHAR(70) NOT NULL
+);
+
+CREATE TABLE Titulos_revistas (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	editor VARCHAR(40) NOT NULL,
+	id_revista INT NOT NULL,
+	no_titulo INT NOT NULL,
+	likes INT NOT NULL,
+	fecha_creacion DATE NOT NULL,
+	pdf_revista LONGBLOB,
+	INDEX (editor),
+	INDEX (id_revista),
+	FOREIGN KEY (editor) REFERENCES Usuarios(nombre_usuario),
+	FOREIGN KEY (id_revista) REFERENCES Revista(id)
+);
+
+CREATE TABLE Comentarios (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nombre_usuario VARCHAR(40) NOT NULL,
+	id_revista INT NOT NULL,
+	id_titulo INT NOT NULL,
+	descripcion VARCHAR(200) NOT NULL,
+	INDEX (nombre_usuario),
+	INDEX (id_revista),
+	INDEX (id_titulo),
+	FOREIGN KEY (nombre_usuario) REFERENCES Usuarios(nombre_usuario),
+	FOREIGN KEY (id_revista) REFERENCES Revista(id),
+	FOREIGN KEY (id_titulo) REFERENCES Titulos_revistas(id)
+);
+
+CREATE TABLE Likes (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nombre_usuario VARCHAR(40) NOT NULL,
+	id_revista INT NOT NULL,
+	INDEX (nombre_usuario),
+	INDEX (id_revista),
+	FOREIGN KEY (nombre_usuario) REFERENCES Usuarios(nombre_usuario),
+	FOREIGN KEY (id_revista) REFERENCES Revista(id),
+);
+
+CREATE TABLE Costo_mes (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	costo INT NOT NULL,
+	id_revista INT NOT NULL,
+	INDEX (id_revista),
+	FOREIGN KEY (id_revista) REFERENCES Revista(id)
+);
+
+CREATE TABLE Pago_usuario (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nombre_usuario VARCHAR(40) NOT NULL,
+	id_costo INT NOT NULL,
+	INDEX (id_costo),
+	INDEX (nombre_usuario),
+	FOREIGN KEY (nombre_usuario) REFERENCES Usuarios(nombre_usuario),
+	FOREIGN KEY (id_costo) REFERENCES Costo_mes(id)	
+);
+
+CREATE TABLE Tags_revistas (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	id_tag INT NOT NULL,
+	id_revista INT NOT NULL,
+	INDEX (id_tag),
+	INDEX (id_revista),
+	FOREIGN KEY (id_tag) REFERENCES Tags(id),
+	FOREIGN KEY (id_revista) REFERENCES Revista(id)
+);
+
+CREATE TABLE Categorias_revista (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	id_categoria INT NOT NULL,
+	id_revista INT NOT NULL,
+	INDEX (id_categoria),
+	INDEX (id_revista),
+	FOREIGN KEY (id_categoria) REFERENCES Categorias(id),
+	FOREIGN KEY (id_revista) REFERENCES Revista(id)
+);
+
+CREATE TABLE Falta_pago (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nombre_usuario VARCHAR(40) NOT NULL,
+	id_revista INT NOT NULL,
+	id_titulo INT NOT NULL,
+	id_costo INT NOT NULL,
+	INDEX (nombre_usuario),
+	INDEX (id_revista),
+	INDEX (id_titulo),
+	INDEX (id_costo),
+	FOREIGN KEY (nombre_usuario) REFERENCES Usuarios(nombre_usuario),
+	FOREIGN KEY (id_revista) REFERENCES Revista(id),
+	FOREIGN KEY (id_titulo) REFERENCES Titulos_revistas(id),
+	FOREIGN KEY (id_costo) REFERENCES Costo_mes(id)
+);

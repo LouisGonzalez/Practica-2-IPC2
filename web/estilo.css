@@ -1,12 +1,15 @@
-body{
-  
+body{  
     font-family: Arial;
+    background-image: url(fondo.jpg);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+
 }
 
 #main-container{
     margin: 150px;
     width: 600px;
-    background-color: rgb(8, 5, 41);
+    background-color: rgb(14, 7, 94);
     color: #FFFFFF;
     padding: 20px;
 
@@ -44,3 +47,4 @@ input {
     border-radius: 6px;
     border: 2px solid #0016b0;
   }
+ 

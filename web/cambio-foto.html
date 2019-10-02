@@ -1,0 +1,50 @@
+<style>
+    .image-upload > input{
+        display: none;
+    }
+    .image-upload img{
+        width: 130px;
+        cursor: pointer;
+    }
+</style>
+<form action="Controlador" method="POST" enctype="multipart/form-data">
+<div>Click en la imagen para modificar tu foto de perfil</div>
+<div class="image-upload">
+    <strong>${nombre}</strong></p>
+    <label id="a" for="fotoPerfil">
+        <img id="imagen" src="http://files.softicons.com/download/toolbar-icons/mono-general-icons-3-by-custom-icon-design/png/256x256/camera.png" alt="Click para subir tu foto" title="Click para subir tu foto">        
+    </label>
+    <input id="fotoPerfil"  name="fotoPerfil" type="file" accept=".jpg,.png"/>
+</div>
+<input type ="submit" name="accion" value="Guardar">
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -4,13 +4,37 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/login-sistema.html</file>
-            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/clases/Conexion.java</file>
-            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/registro.jsp</file>
-            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/resultado.jsp</file>
-            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/clases/Llamadas.java</file>
-            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/estilo.css</file>
-            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/ingreso-usuarios.html</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/suscriptor/Suscriptor.java</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/suscriptor/SuscriptorDAO.java</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/PublicacionTitulos.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/servlets/MostrarPDF.java</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/Pago.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/PerfilUsuario.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/general/LlamadasGenerales.java</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/revistas/LlamadasRevista.java</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/PerfilEditor.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/ListaRevistas.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/ConfirmacionPago.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/ListaMisRevistas.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/servlets/ControladorPerfil.java</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/servlets/ControladorTitulos.java</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/suscriptor/LlamadasSuscriptor.java</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/ModificacionDatosUsuario.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/clases/Usuario.java</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/DescripcionRevista.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/servlets/ControladorSuscriptor.java</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/PublicacionRevistas.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/CaracteristicasUsuario.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/InfoPerfil.jsp</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/NuevaCuenta.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/ListaRevistasSuscritas.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/servlets/Controlador.java</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/clases/UsuarioDAO.java</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/EleccionCampoUsuario.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/FotoPerfilUsuario.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/clases/Llamadas.java</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/ListaTitulosSuscritos.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/servlets/ControladorImagen.java</file>
         </group>
     </open-files>
 </project-private>

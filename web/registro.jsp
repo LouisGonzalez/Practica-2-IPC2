@@ -9,16 +9,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link rel='stylesheet' href='estilo.css'>
+        <link rel='stylesheet' href='estilo.css'/>
     </head>
-    <body background ='revistas.png'>
+    <body>
         <div id ='main-container'>
             <h1>Inicio de Sesion</h1>     
-            <%@include file="login-sistema.html"%>
-            
+            <%@include file="login-sistema.html"%>        
         </div>
-        <a href="resultado.jsp">Deseo crear una cuenta</a>
-     
-    </body>
-    
+        <a href="NuevaCuenta.jsp">Deseo crear una cuenta</a>
+    </body>    
 </html>
