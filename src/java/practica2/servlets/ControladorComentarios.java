@@ -78,16 +78,29 @@ public class ControladorComentarios extends HttpServlet {
         String accion = request.getParameter("accion");
         HttpSession session = request.getSession();        
         int id = (int) session.getAttribute("id_revista");
+        PrintWriter out = response.getWriter();
+        String verificador;
         try {
             String user = (String) session.getAttribute("nombre");
             switch(accion){
                 case "Enviar": 
-                llamadaComentario.crearComentario(user, id, request.getParameter("comentario")); 
-                request.getRequestDispatcher("Comentarios.jsp").forward(request, response);
+                verificador = (String) llamadaGeneral.mostrarDatos(id, "bloqueo_comentarios", "Bloqueos", "id_revista");                
+                if(verificador.equals("desactivado")){
+                    llamadaComentario.crearComentario(user, id, request.getParameter("comentario")); 
+                    request.getRequestDispatcher("Comentarios.jsp").forward(request, response);                
+                } else {
+                    out.println("<script>");
+                    out.println("alert('Al parecer esta opcion esta bloqueada por el editor, porfavor intenta mas tarde');");
+                    out.println("window.location.href = 'Comentarios.jsp'");
+                    out.println("</script>"); 
+                }    
+                    
+                    
+                    
                 break;                
             }
             
-            //AL DESPERTAR QUE LO PRIMERO QUE HAGAS SEA UN GIT!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            
             
             
             

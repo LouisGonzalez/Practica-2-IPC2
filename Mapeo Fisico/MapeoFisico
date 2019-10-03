@@ -10,6 +10,7 @@ CREATE TABLE Revista (
 	titulo_revista VARCHAR(40) NOT NULL,
 	cuota_suscripcion INT NOT NULL,
 	no_likes INT NOT NULL,
+	costo_mensual INT NOT NULL,
 	INDEX (editor),
 	FOREIGN KEY (editor) REFERENCES Usuarios(nombre_usuario)
 );
@@ -137,4 +138,19 @@ CREATE TABLE Falta_pago (
 	FOREIGN KEY (id_revista) REFERENCES Revista(id),
 	FOREIGN KEY (id_titulo) REFERENCES Titulos_revistas(id),
 	FOREIGN KEY (id_costo) REFERENCES Costo_mes(id)
+);
+
+CREATE TABLE Cuota_global (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	Cuota INT NOT NULL
+);
+
+CREATE TABLE Bloqueos (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	id_revista INT NOT NULL,
+	bloqueo_likes VARCHAR(10) NOT NULL,
+	bloqueo_comentarios VARCHAR(10) NOT NULL,
+	bloqueo_suscripcion VARCHAR(10) NOT NULL,
+	INDEX (id_revista),
+	FOREIGN KEY (id_revista) REFERENCES Revista(id)
 );

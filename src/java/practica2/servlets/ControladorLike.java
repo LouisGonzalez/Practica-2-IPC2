@@ -88,17 +88,25 @@ public class ControladorLike extends HttpServlet {
             switch(accion){
                 case "Me gusta":
                     verificador = llamadaLike.siExiste(BUSQUEDA, user, id_revista); 
-                    if(verificador == false){                        
-                        actualizacion = likesActuales + 1;
-                        llamadaGeneral.modificarDatoUsuario("no_likes", actualizacion, id_revista, "Revista", "id");
-                        llamadaLike.crearLike(user, id_revista);
-                        request.getRequestDispatcher("ListaRevistasSuscritas.jsp").forward(request, response);
+                    String comprobador = (String) llamadaGeneral.mostrarDatos(id_revista, "bloqueo_likes", "Bloqueos", "id_revista");                    
+                    if(comprobador.equals("desactivado")){
+                        if(verificador == false){                        
+                            actualizacion = likesActuales + 1;
+                            llamadaGeneral.modificarDatoUsuario("no_likes", actualizacion, id_revista, "Revista", "id");
+                            llamadaLike.crearLike(user, id_revista);
+                            request.getRequestDispatcher("ListaRevistasSuscritas.jsp").forward(request, response);
+                        } else {
+                            actualizacion = likesActuales - 1;
+                            llamadaGeneral.modificarDatoUsuario("no_likes", actualizacion, id_revista, "Revista", "id");
+                            llamadaLike.eliminarLike(user, id_revista);
+                            request.getRequestDispatcher("ListaRevistasSuscritas.jsp").forward(request, response);
+                        }
                     } else {
-                        actualizacion = likesActuales - 1;
-                        llamadaGeneral.modificarDatoUsuario("no_likes", actualizacion, id_revista, "Revista", "id");
-                        llamadaLike.eliminarLike(user, id_revista);
-                        request.getRequestDispatcher("ListaRevistasSuscritas.jsp").forward(request, response);
-                    }
+                        out.println("<script>");
+                        out.println("alert('Al parecer esta opcion esta bloqueada por el editor, porfavor intenta mas tarde');");
+                        out.println("window.location.href = 'ListaRevistasSuscritas.jsp'");
+                        out.println("</script>");                 
+                    }                        
                 break;
             }
         } catch (SQLException ex) {

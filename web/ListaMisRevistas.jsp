@@ -16,13 +16,14 @@
         <link href="estiloPerfil.css" rel="stylesheet">
         <%
             String user = (String)session.getAttribute("nombre");
+            int id = (int) session.getAttribute("idMiRevista");
         %>    
     </head>
     <body>
         <%
             RevistaDAO dao = new RevistaDAO();
             Revista revista = new Revista();
-            ArrayList<Revista> listar = dao.ListarRevistas(user);
+            ArrayList<Revista> listar = dao.ListarMisRevistas(id);
         %>    
         <div class="container">
             <div class="tutorial">
@@ -31,7 +32,7 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Titulo</th>
+                                    <th>Fecha Creacion</th>
                                     <th>Revista</th>
                                 </tr>
                             </thead>
@@ -41,8 +42,7 @@
                                         revista = listar2;                                 
                                 %>
                                 <tr>
-                                    <td><%=revista.getTitulo_revista()%></td>
-                                    <td><%=revista.getId()%></td>                                    
+                                    <td><%=revista.getFecha_creacion()%></td>
                                     <td>
                                         <a href="MostrarPDF?id=<%=revista.getId()%>" target="blank"><img src="pdf (1).jpeg" title="pdf" width="50" height="50"/></a>                                          
                                     </td>

@@ -16,8 +16,9 @@ public class RevistaDAO {
     private static Conexion login;
     private static final String TITULO_SUBIDO = "SELECT * FROM Titulos_revistas WHERE editor = ?";
     private static final String REVISTA_SUBIDA = "SELECT * FROM Revista WHERE id = ?";
-    private static final String TITULO_PUBLICADO = "SELECT * FROM Titulos_revistas ORDER BY id";
     private static final String LISTADO_TITULOS = "SELECT * FROM Revista ORDER BY id";
+    private static final String MIS_TITULOS = "SELECT * FROM Revista WHERE editor = ?";
+    private static final String MIS_REVISTAS = "SELECT * FROM Titulos_revistas WHERE id_revista = ?";
     
     public static Connection obtenerConexion(){
         login= new Conexion();
@@ -64,6 +65,46 @@ public class RevistaDAO {
         return list;
     }
     
+    public ArrayList<Revista> ListarMisTitulos(String user) throws SQLException{
+        ArrayList<Revista> list = new ArrayList<>();
+        obtenerConexion();
+        PreparedStatement declaracionTitulo = cn.prepareStatement(MIS_TITULOS);
+        declaracionTitulo.setString(1, user);
+        ResultSet result = declaracionTitulo.executeQuery();
+        while(result.next()){
+            Revista revista = new Revista();
+            revista.setId(result.getInt("id"));
+            revista.setTitulo_revista(result.getString("titulo_revista"));
+            revista.setTitulos_subidos(result.getInt("titulos_subidos"));
+            revista.setNo_suscriptores(result.getInt("no_suscriptores"));
+            revista.setDescripcion(result.getString("descripcion"));
+            revista.setCuota_suscripcion(result.getInt("cuota_suscripcion"));
+            revista.setNo_likes(result.getInt("no_likes"));
+            revista.setCosto_mensual(result.getInt("costo_mensual"));
+            list.add(revista);
+        }
+        login.Desconectar();
+        return list;
+        
+    }
+    
+    public ArrayList<Revista> ListarMisRevistas(int id) throws SQLException{
+        ArrayList<Revista> list = new ArrayList<>();
+        obtenerConexion();
+        PreparedStatement declaracionRevista = cn.prepareStatement(MIS_REVISTAS);
+        declaracionRevista.setInt(1, id);
+        ResultSet result = declaracionRevista.executeQuery();
+        while(result.next()){
+            Revista revista = new Revista();
+            revista.setId(result.getInt("id"));
+            revista.setFecha_creacion(result.getDate("fecha_creacion"));
+            revista.setArchivoPdf(result.getBytes("pdf_revista"));
+            list.add(revista);
+        }
+        login.Desconectar();
+        return list;
+    }
+    
     public ArrayList<Revista> ListarRevistasAdmin() throws SQLException{
         ArrayList<Revista> list = new ArrayList<>();
         obtenerConexion();
@@ -85,5 +126,6 @@ public class RevistaDAO {
         login.Desconectar();
         return list;
     }
+    
      
 }

@@ -52,6 +52,10 @@
         <servlet-name>ControladorCuota</servlet-name>
         <servlet-class>practica2.servlets.ControladorCuota</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorBloqueos</servlet-name>
+        <servlet-class>practica2.servlets.ControladorBloqueos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controlador</servlet-name>
         <url-pattern>/Controlador</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>ControladorCuota</servlet-name>
         <url-pattern>/ControladorCuota</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorBloqueos</servlet-name>
+        <url-pattern>/ControladorBloqueos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

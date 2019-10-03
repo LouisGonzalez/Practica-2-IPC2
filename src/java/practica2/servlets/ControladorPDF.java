@@ -26,7 +26,6 @@ import practica2.revistas.Revista;
  * @author luisGonzalez
  */
 @MultipartConfig
-@WebServlet("/c")
 public class ControladorPDF extends HttpServlet {
 
     Revista revistas = new Revista();
@@ -47,18 +46,10 @@ public class ControladorPDF extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ControladorPDF</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ControladorPDF at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        int idRevista = Integer.parseInt(request.getParameter("idpp"));
+        HttpSession session = request.getSession();
+        session.setAttribute("idMiRevista", idRevista);
+        request.getRequestDispatcher("ListaMisRevistas.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -73,17 +64,8 @@ public class ControladorPDF extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        /*try {
-            out.println("<select>");
-            String[] c = general.listarColumna("Revista", "id", response, out);
-            request.setAttribute("a", c);
-            out.println("</select>");
-        } catch (SQLException ex) {
-            Logger.getLogger(ControladorPDF.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-        
+        response.setContentType("text/html;charset=UTF-8");  
+        processRequest(request, response);
     }
 
     /**

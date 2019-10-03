@@ -52,38 +52,7 @@ public class ControladorSuscriptor extends HttpServlet {
             
         try {
             llamadaSuscriptor.revisarFecha(id, llamadaGeneral, request, response);
-            /*Date ultimaFecha = (Date) llamadaGeneral.mostrarDatos(id, "ultimo_pago", "Suscriptor", "id");
-            int dias = (int) ((fechaActual.getTime()-ultimaFecha.getTime())/86400000);*/
-            /*if(dias<=30){
-                //request.getRequestDispatcher("ListaTitulosSuscritos.jsp").forward(request, response);
-                request.getRequestDispatcher("ListaTitulosSuscritos.jsp").forward(request, response);
-                } else {
-                System.out.println("No has pagado tu suscripcion perro");
-            }*/
-            
-            
-            
-            /*if(fechaActual.after(ultimaFecha)){
-                System.out.println("fecha actual es mayor a la ultima fecha de pago");
-            } else if(fechaActual.before(ultimaFecha)){
-                System.out.println("fecha actual es menor a la ultima fecha de pago");
-            }*/
-            
-            
-            
-            
-            
-            /*Calendar calendario = Calendar.getInstance();
-            calendario.setTime(ultimaFecha);
-            calendario.add(Calendar.DAY_OF_YEAR, PLAZO_DIAS);
-            System.out.println(calendario.getTime());
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            String formatted = format.format(calendario.getTime());
-            System.out.println(formatted);*/
-            
-            
-            
-        } catch (SQLException | ParseException ex) {
+         } catch (SQLException | ParseException ex) {
             Logger.getLogger(ControladorSuscriptor.class.getName()).log(Level.SEVERE, null, ex);
         }
         
@@ -135,10 +104,19 @@ public class ControladorSuscriptor extends HttpServlet {
                     Suscriptor suscriptor = new Suscriptor();        
                     suscriptor.setNombre_usuario(user);
                     suscriptor.setId_revista(Integer.parseInt(llamada.mostrarDatos(revista.getTitulo_revista(), "id", "Revista", "titulo_revista").toString()));
-                    suscriptor.setFecha_suscripcion(Date.valueOf(request.getParameter("fecha_suscripcion")));
-                    llamadaSuscriptor.crearSuscripcion(suscriptor.getFecha_suscripcion(), suscriptor.getId_revista(), suscriptor.getNombre_usuario());
-                    cant_suscriptores = revista.getNo_suscriptores() + 1;
-                    llamadaGeneral.modificarDatoUsuario("no_suscriptores", cant_suscriptores, revista.getTitulo_revista(), "Revista", "titulo_revista");
+                    suscriptor.setFecha_suscripcion(Date.valueOf(request.getParameter("fecha_suscripcion")));                                        
+                    String verificador = (String) llamadaGeneral.mostrarDatos(suscriptor.getId_revista(), "bloqueo_suscripcion", "Bloqueos", "id_revista");                    
+                    if(verificador.equals("desactivado")){
+                        llamadaSuscriptor.crearSuscripcion(suscriptor.getFecha_suscripcion(), suscriptor.getId_revista(), suscriptor.getNombre_usuario());
+                        cant_suscriptores = revista.getNo_suscriptores() + 1;
+                        llamadaGeneral.modificarDatoUsuario("no_suscriptores", cant_suscriptores, revista.getTitulo_revista(), "Revista", "titulo_revista");                    
+                        llamada.comprobacionTipoUsuario(user, request, response);
+                    } else {
+                        out.println("<script>");
+                        out.println("alert('Al parecer esta opcion esta bloqueada por el editor, porfavor intenta mas tarde');");
+                        out.println("window.location.href = 'DescripcionRevista.jsp'");
+                        out.println("</script>");                 
+                    }                    
                     break; 
                 case "Deseo pagar":
                     request.getRequestDispatcher("Pago.jsp").forward(request, response);
