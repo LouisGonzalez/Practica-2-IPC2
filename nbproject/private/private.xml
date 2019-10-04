@@ -9,44 +9,50 @@
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/PublicacionTitulos.jsp</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/bloqueos/LlamadasBloqueos.java</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/servlets/MostrarPDF.java</file>
-            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/Pago.jsp</file>
-            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/PerfilUsuario.jsp</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/general/LlamadasGenerales.java</file>
-            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/revistas/LlamadasRevista.java</file>
-            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/PerfilEditor.jsp</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/ListaRevistas.jsp</file>
-            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/administrador/LlamadasAdministrador.java</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/servlets/ControladorAdministrador.java</file>
-            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/ConfirmacionPago.jsp</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/ListaMisRevistas.jsp</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/CambioCuotaGlobal.jsp</file>
-            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/servlets/ControladorPerfil.java</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/servlets/ControladorTitulos.java</file>
-            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/suscriptor/LlamadasSuscriptor.java</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/ModificacionDatosUsuario.jsp</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/clases/Usuario.java</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/DescripcionRevista.jsp</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/servlets/ControladorSuscriptor.java</file>
-            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/ListadoRevistasAdmin.jsp</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/PublicacionRevistas.jsp</file>
-            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/CaracteristicasUsuario.jsp</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/servlets/ControladorCuota.java</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/InfoPerfil.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/Bloqueos.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/PerfilAdministrador.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/clases/Llamadas.java</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/EliminarAdministrador.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/revistas/RevistaDAO.java</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/PersonalizacionCuota.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/Pago.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/PerfilUsuario.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/revistas/LlamadasRevista.java</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/PerfilEditor.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/administrador/LlamadasAdministrador.java</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/ConfirmacionPago.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/servlets/ControladorBloqueos.java</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/servlets/ControladorPerfil.java</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/revistas/Revista.java</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/suscriptor/LlamadasSuscriptor.java</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/ListadoRevistasAdmin.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/ListaMisTitulos.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/CaracteristicasUsuario.jsp</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/NuevaCuenta.jsp</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/ListaRevistasSuscritas.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/servlets/ControladorLike.java</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/servlets/Controlador.java</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/clases/UsuarioDAO.java</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/AgregarAdministrador.jsp</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/EleccionCampoUsuario.jsp</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/FotoPerfilUsuario.jsp</file>
-            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/PerfilAdministrador.jsp</file>
-            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/clases/Llamadas.java</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/ListaTitulosSuscritos.jsp</file>
-            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/EliminarAdministrador.jsp</file>
+            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/servlets/ControladorComentarios.java</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/administrador/AdministradorDAO.java</file>
-            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/revistas/RevistaDAO.java</file>
             <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/src/java/practica2/servlets/ControladorImagen.java</file>
-            <file>file:/home/luisitopapurey/Escritorio/IPC2/Practica%202/Revistas/web/PersonalizacionCuota.jsp</file>
         </group>
     </open-files>
 </project-private>

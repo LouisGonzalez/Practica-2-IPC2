@@ -4,6 +4,9 @@
     Author     : luisitopapurey
 --%>
 
+<%@page import="practica2.categorias.CategoriasDAO"%>
+<%@page import="java.sql.*"%>
+<%@page import="practica2.clases.Conexion"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="practica2.revistas.Revista"%>
 <%@page import="practica2.revistas.RevistaDAO"%>
@@ -19,15 +22,36 @@
         %>
     </head>
     <body>
-        <%
-            RevistaDAO dao = new RevistaDAO();
-            Revista revista = new Revista();
-            ArrayList<Revista> listar = dao.ListarTitulos();
-        %>
         <div class="container">
             <div class="tutorial">
                 <div class="slider">
                     <div class="information">
+                        <form action="ControladorCategoria" method="POST">
+                            <select name="eleccion">
+                                <%Conexion login= new Conexion();
+                                Connection cn = login.getConnection();       
+                                String consulta = "SELECT * FROM Categorias ORDER BY id";
+                                PreparedStatement declaracionConsulta = cn.prepareStatement(consulta);
+                                ResultSet result = declaracionConsulta.executeQuery();
+                                while(result.next()){
+                                %><option value="<%=result.getString("descripcion")%>"><%=result.getString("descripcion")%></option><%
+                                }%>                                
+                            </select><br><br>
+                            <label><input type="checkbox" name="busqueda" value="busqueda">Deseo ver todas las revistas</label><br><br>
+                            <input type="submit" name="accion" value="Buscar"/>
+                        </form>
+                            <%
+                                Revista revista = new Revista();
+                                ArrayList<Revista> listar;
+                                boolean verificador = (boolean) session.getAttribute("verificador");
+                                if(verificador == false){
+                                    CategoriasDAO dao = new CategoriasDAO();
+                                    listar = dao.ListarFiltros((String) session.getAttribute("eleccion"));
+                                } else {
+                                    RevistaDAO dao = new RevistaDAO();
+                                    listar = dao.ListarTitulos();
+                                }                               
+                            %>        
                         <table>
                             <thead>
                                 <tr>

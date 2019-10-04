@@ -43,6 +43,8 @@ CREATE TABLE Categorias (
 	descripcion VARCHAR(70) NOT NULL
 );
 
+ALTER TABLE Categorias ADD UNIQUE (descripcion);	
+
 CREATE TABLE Tags (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	descripcion VARCHAR(70) NOT NULL
@@ -66,20 +68,19 @@ CREATE TABLE Comentarios (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	nombre_usuario VARCHAR(40) NOT NULL,
 	id_revista INT NOT NULL,
-	id_titulo INT NOT NULL,
 	descripcion VARCHAR(200) NOT NULL,
+	fecha_comentario DATE NOT NULL,
 	INDEX (nombre_usuario),
 	INDEX (id_revista),
-	INDEX (id_titulo),
 	FOREIGN KEY (nombre_usuario) REFERENCES Usuarios(nombre_usuario),
 	FOREIGN KEY (id_revista) REFERENCES Revista(id),
-	FOREIGN KEY (id_titulo) REFERENCES Titulos_revistas(id)
 );
 
 CREATE TABLE Likes (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	nombre_usuario VARCHAR(40) NOT NULL,
 	id_revista INT NOT NULL,
+	fecha_like DATE NOT NULL,
 	INDEX (nombre_usuario),
 	INDEX (id_revista),
 	FOREIGN KEY (nombre_usuario) REFERENCES Usuarios(nombre_usuario),
@@ -116,12 +117,12 @@ CREATE TABLE Tags_revistas (
 
 CREATE TABLE Categorias_revista (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	id_categoria INT NOT NULL,
 	id_revista INT NOT NULL,
-	INDEX (id_categoria),
+	categoria VARCHAR(50) NOT NULL,
 	INDEX (id_revista),
-	FOREIGN KEY (id_categoria) REFERENCES Categorias(id),
-	FOREIGN KEY (id_revista) REFERENCES Revista(id)
+	INDEX (categoria),
+	FOREIGN KEY (id_revista) REFERENCES Revista(id),
+	FOREIGN KEY (categoria) REFERENCES Categorias(descripcion)
 );
 
 CREATE TABLE Falta_pago (

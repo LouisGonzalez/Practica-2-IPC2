@@ -27,8 +27,9 @@
                                 <li><a href="EliminarAdministrador.jsp">Eliminar:</a></li>
                             </ul>                                 
                     </li>        
-                    <li><a href="ControladorCuota">Cambiar el valor de la cuota global</a></li>
+                    <li><a href="ControladorCuota">Nueva cuota global</a></li>
                     <li><a href="ListadoRevistasAdmin.jsp">Listado revistas</a></li>
+                    <li><a href="NuevaCategoria.jsp">Nueva categoria</a></li>
                     <li>Reportes</li>
                 </ul>
             </div>

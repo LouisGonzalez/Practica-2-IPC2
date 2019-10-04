@@ -27,12 +27,11 @@
                         <li><a href="ControladorPerfil?usuario=<%=user%>" target="blank">Ver Perfil</a></li>
                         <li><a href="EleccionRevista.jsp">Publicar una nueva revista</li>
                         <li><a href="ListaMisTitulos.jsp">Ver mis revistas subidas</li>
-                        <li><a href="ListaRevistas.jsp">Suscribirme a una nueva revista</li>
+                        <li><a href="ControladorCategoria">Suscribirme a una nueva revista</li>
                         <li><a href="ListaRevistasSuscritas.jsp">Ver mis revistas suscritas</li>
-                        <li><a href="Bloqueos.jsp">Bloqueos</a></li>
-                        <li>asfdds<i class="fa fa-angle-down">
+                        <li>Reportes<i class="fa fa-angle-down">
                             <ul>
-                                <li>asd</li>
+                                <li><a href="ControladorReportesEditor">Reporte de comentarios</a></li>
                                 <li>dsf</li>
                             </ul>
                         </li>

@@ -1,5 +1,7 @@
 package practica2.likes;
 
+import java.sql.Date;
+
 /**
  *
  * @author luisGonzalez
@@ -8,7 +10,16 @@ public class Likes {
     
     private int id, id_revista;
     private String nombre_usuario;
+    private Date fecha_like;
 
+    public Date getFecha_like() {
+        return fecha_like;
+    }
+
+    public void setFecha_like(Date fecha_like) {
+        this.fecha_like = fecha_like;
+    }
+    
     public int getId() {
         return id;
     }

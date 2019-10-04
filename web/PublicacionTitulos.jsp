@@ -3,6 +3,8 @@
     Created on : 22/09/2019, 01:39:29 AM
     Author     : luisitopapurey
 --%>
+<%@page import="java.sql.*"%>
+<%@page import="practica2.clases.Conexion"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -41,6 +43,17 @@
                                 <br><br>
                                 <label for="cuota">Defina la cuota de suscripcion:</label>
                                 <input type="number" id="cuota" name="cuota" required/><br><br>
+                                <label for="cat">A que categoria pertenecera su revista:</label>                                
+                                <select name="categoria">
+                                    <%Conexion login = new Conexion();
+                                    Connection cn = login.getConnection();
+                                    String LISTADO = "SELECT * FROM Categorias ORDER BY id";
+                                    PreparedStatement declaracionCategoria = cn.prepareStatement(LISTADO);
+                                    ResultSet result = declaracionCategoria.executeQuery();
+                                    while(result.next()){%>
+                                    <option value="<%=result.getString("descripcion")%>"><%=result.getString("descripcion")%></option><%                                        
+                                    }%>                                    
+                                </select><br><br>
                                 <label for="descripcion">Agrega una descripcion sobre tu revista:</label>
                                 <textarea name="descripcion" rows="5" cols="85" spellcheck="true"></textarea><br><br>
                                 Al momento de publicar tu nueva revista pasaras tu cuenta pasara a ser<br>

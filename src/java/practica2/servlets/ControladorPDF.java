@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import practica2.bloqueos.LlamadasBloqueos;
+import practica2.categorias.LlamadasCategorias;
 import practica2.clases.Llamadas;
 import practica2.general.LlamadasGenerales;
 import practica2.revistas.LlamadasRevista;
@@ -28,11 +29,12 @@ import practica2.revistas.Revista;
 @MultipartConfig
 public class ControladorPDF extends HttpServlet {
 
-    Revista revistas = new Revista();
-    LlamadasRevista llamadas = new LlamadasRevista(); 
-    Llamadas nuevaLlamada = new Llamadas();
-    LlamadasGenerales general = new LlamadasGenerales();
-    LlamadasBloqueos llamadaBloqueo = new LlamadasBloqueos();
+    private Revista revistas = new Revista();
+    private LlamadasRevista llamadas = new LlamadasRevista(); 
+    private Llamadas nuevaLlamada = new Llamadas();
+    private LlamadasGenerales general = new LlamadasGenerales();
+    private LlamadasBloqueos llamadaBloqueo = new LlamadasBloqueos();
+    private LlamadasCategorias llamadaCategoria = new LlamadasCategorias();
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -92,6 +94,7 @@ public class ControladorPDF extends HttpServlet {
                     session.setAttribute("tituloRev", request.getParameter("titulo"));                    
                     revistas.setId((int) general.mostrarDatos(revistas.getTitulo_revista(), "id", "Revista", "titulo_revista"));
                     llamadaBloqueo.crearBloqueo(revistas.getId());
+                    llamadaCategoria.crearCategoria(revistas.getId(), request.getParameter("categoria"));
                     request.getRequestDispatcher("PublicacionRevistas.jsp").forward(request, response);
                     break;
                 case "Guardar Revista":

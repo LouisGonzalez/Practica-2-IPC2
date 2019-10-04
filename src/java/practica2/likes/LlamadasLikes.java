@@ -11,7 +11,7 @@ public class LlamadasLikes {
     
     private static Connection cn;
     private static Conexion login;
-    private static final String NUEVO_LIKE = "INSERT INTO Likes (id, nombre_usuario, id_revista) VALUES (?, ?, ?)";
+    private static final String NUEVO_LIKE = "INSERT INTO Likes (id, nombre_usuario, id_revista, fecha_like) VALUES (?, ?, ?, ?)";
     private static final String BORRAR_LIKE = "DELETE FROM Likes WHERE nombre_usuario = ? AND id_revista = ?";
     
     public static Connection obtenerConexion(){
@@ -32,10 +32,13 @@ public class LlamadasLikes {
     
     public void crearLike(String nombre_usuario, int id_revista) throws SQLException{
         obtenerConexion();
+        java.util.Date fecha = new java.util.Date();
+        Date fechaAgregar = new Date(fecha.getTime());
         PreparedStatement declaracionLike = cn.prepareStatement(NUEVO_LIKE);
         declaracionLike.setInt(1, 0);
         declaracionLike.setString(2, nombre_usuario);
         declaracionLike.setInt(3, id_revista);
+        declaracionLike.setDate(4, fechaAgregar);
         declaracionLike.executeUpdate();
         login.Desconectar();
     }
