@@ -9,8 +9,29 @@ import java.sql.Date;
 public class Atributos {
     
     private String nombre_usuario, comentario, titulo_revista;
-    private Date fecha_creado;
+    private Date fecha_creado, ultimo_pago;
+    private float total;
 
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
+    }
+    
+    
+
+    public Date getUltimo_pago() {
+        return ultimo_pago;
+    }
+
+    public void setUltimo_pago(Date ultimo_pago) {
+        this.ultimo_pago = ultimo_pago;
+    }
+
+    
+    
     public String getNombre_usuario() {
         return nombre_usuario;
     }

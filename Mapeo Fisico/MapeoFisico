@@ -95,7 +95,7 @@ CREATE TABLE Costo_mes (
 	FOREIGN KEY (id_revista) REFERENCES Revista(id)
 );
 
-CREATE TABLE Pago_usuario (
+CREATE TABLE Pago_usuario (							//HAY QUE ELIMINAR ESTA TABLA 
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	nombre_usuario VARCHAR(40) NOT NULL,
 	id_costo INT NOT NULL,
@@ -152,6 +152,15 @@ CREATE TABLE Bloqueos (
 	bloqueo_likes VARCHAR(10) NOT NULL,
 	bloqueo_comentarios VARCHAR(10) NOT NULL,
 	bloqueo_suscripcion VARCHAR(10) NOT NULL,
+	INDEX (id_revista),
+	FOREIGN KEY (id_revista) REFERENCES Revista(id)
+);
+
+CREATE TABLE Pagos_suscriptor (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nombre_usuario VARCHAR(50) NOT NULL,
+	id_revista INT NOT NULL,
+	total_acumulado DEC(7,2) NOT NULL,
 	INDEX (id_revista),
 	FOREIGN KEY (id_revista) REFERENCES Revista(id)
 );

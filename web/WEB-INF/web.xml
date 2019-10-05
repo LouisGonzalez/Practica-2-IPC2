@@ -64,6 +64,10 @@
         <servlet-name>ControladorReportesEditor</servlet-name>
         <servlet-class>practica2.servlets.ControladorReportesEditor</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorSegundoReporteEditor</servlet-name>
+        <servlet-class>practica2.servlets.ControladorSegundoReporteEditor</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controlador</servlet-name>
         <url-pattern>/Controlador</url-pattern>
@@ -127,6 +131,10 @@
     <servlet-mapping>
         <servlet-name>ControladorReportesEditor</servlet-name>
         <url-pattern>/ControladorReportesEditor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorSegundoReporteEditor</servlet-name>
+        <url-pattern>/ControladorSegundoReporteEditor</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

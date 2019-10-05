@@ -13,6 +13,10 @@
         <link href="estiloPerfil.css" rel="stylesheet">
         <%
         String user = (String)session.getAttribute("nombre");
+        String primero = "ReporteComentariosEditor.jsp";
+        String segundo = "ReporteSuscripcionesEditor.jsp";
+        String tercero = "ReporteLikesEditor.jsp";
+        String cuarto = "ReporteGananciasEditor.jsp";
         %>
         <p>UserName: <%=user%></p>
     </head>
@@ -23,7 +27,7 @@
                 <div class="tutorial">
                     <p>asfsdafasdf</p>
                     <ul>
-                
+                        
                         <li><a href="ControladorPerfil?usuario=<%=user%>" target="blank">Ver Perfil</a></li>
                         <li><a href="EleccionRevista.jsp">Publicar una nueva revista</li>
                         <li><a href="ListaMisTitulos.jsp">Ver mis revistas subidas</li>
@@ -31,8 +35,10 @@
                         <li><a href="ListaRevistasSuscritas.jsp">Ver mis revistas suscritas</li>
                         <li>Reportes<i class="fa fa-angle-down">
                             <ul>
-                                <li><a href="ControladorReportesEditor">Reporte de comentarios</a></li>
-                                <li>dsf</li>
+                                <li><a href="ControladorReportesEditor?direccion=<%=primero%>">Reporte de comentarios</a></li>
+                                <li><a href="ControladorReportesEditor?direccion=<%=segundo%>">Reporte de suscripciones</a></li>
+                                <li><a href="ControladorReportesEditor?direccion=<%=tercero%>">Reporte de likes</a></li>
+                                <li><a href="ControladorReportesEditor?direccion=<%=cuarto%>">Reporte de ganancias</a></li>
                             </ul>
                         </li>
                         <li>asda<i class="fa fa-angle-down"></i>

@@ -24,9 +24,10 @@ public class LlamadasSuscriptor {
     
     private static Connection cn;
     private static Conexion login;
-    private Llamadas llamadas = new Llamadas();
     private static final String NUEVO_SUSCRIPTOR = "INSERT INTO Suscriptor (id, nombre_usuario, id_revista, fecha_suscripcion, estado_suscripcion, ultimo_pago) VALUES(?, ?, ?, ?, ?, ?)";
     private static final String ESTADO = "ACTIVADA";
+    private static final String ACTUALIZACION_PAGOS = "UPDATE Pagos_suscriptor SET total_acumulado = ? WHERE id_revista = ? AND nombre_usuario = ?";
+    private static final String TOTAL = "SELECT * FROM Pagos_suscriptor WHERE nombre_usuario = ? AND id_revista = ?";
     private final int PLAZO_DIAS = 30;
     
     
@@ -69,8 +70,54 @@ public class LlamadasSuscriptor {
                 request.getRequestDispatcher("ListaTitulosSuscritos.jsp").forward(request, response);
             } else {
                 request.getRequestDispatcher("ConfirmacionPago.jsp").forward(request, response);
-            }
-        
+            }        
+    }
+    
+    public void totalDiasSinPagar(String user, int id, LlamadasGenerales llamadaGeneral, Date fechaPagar, Date ultimoPago, int id_revista) throws SQLException, IOException{
+        int dias = (int) ((fechaPagar.getTime() - ultimoPago.getTime())/86400000);
+        int mesesTotales = dias / 30;
+        float nuevoTotal;
+        int cuota = (int) llamadaGeneral.mostrarDatos(id_revista, "cuota_suscripcion", "Revista", "id");
+        float totalAcumulado = totalAcumulado(user, id_revista);   
+        System.out.println(totalAcumulado);
+        System.out.println(cuota);
+        System.out.println(mesesTotales); 
+        if(mesesTotales == 0){
+           obtenerConexion();
+           nuevoTotal = cuota + totalAcumulado;
+           PreparedStatement declaracionPago = cn.prepareStatement(ACTUALIZACION_PAGOS);
+           declaracionPago.setFloat(1, nuevoTotal);
+           declaracionPago.setInt(2, id_revista);
+           declaracionPago.setString(3, user);
+           declaracionPago.executeUpdate();
+           login.Desconectar();
+        } else if(mesesTotales > 0){
+            obtenerConexion();
+            nuevoTotal = (mesesTotales * cuota) + totalAcumulado;
+            PreparedStatement declaracionPago = cn.prepareStatement(ACTUALIZACION_PAGOS);
+            declaracionPago.setFloat(1, nuevoTotal);
+            declaracionPago.setInt(2, id_revista);
+            declaracionPago.setString(3, user);
+            declaracionPago.executeUpdate();
+            login.Desconectar();
+        }
+    }
+    
+    public float totalAcumulado(String user, int id_revista) throws SQLException{
+        obtenerConexion();
+        float totalAcumulado = 0;
+        System.out.println(user);
+        System.out.println(id_revista);
+        PreparedStatement declaracionTotal = cn.prepareStatement(TOTAL);
+        declaracionTotal.setString(1, user);
+        declaracionTotal.setInt(2, id_revista);
+        ResultSet result2 = declaracionTotal.executeQuery();
+        while(result2.next()){
+            totalAcumulado = result2.getFloat("total_acumulado");
+            System.out.println(totalAcumulado);
+        }
+        login.Desconectar();
+        return totalAcumulado;
     }
     
     

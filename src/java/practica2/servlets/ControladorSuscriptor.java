@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import practica2.clases.Llamadas;
 import practica2.general.LlamadasGenerales;
+import practica2.pagos.LlamadasPagos;
 import practica2.revistas.Revista;
 import practica2.suscriptor.LlamadasSuscriptor;
 import practica2.suscriptor.Suscriptor;
@@ -31,6 +32,7 @@ public class ControladorSuscriptor extends HttpServlet {
     private Llamadas llamada = new Llamadas();
     private LlamadasGenerales llamadaGeneral = new LlamadasGenerales();
     private LlamadasSuscriptor llamadaSuscriptor = new LlamadasSuscriptor();
+    private LlamadasPagos llamadaPago = new LlamadasPagos();
     
     
     /**
@@ -55,12 +57,6 @@ public class ControladorSuscriptor extends HttpServlet {
          } catch (SQLException | ParseException ex) {
             Logger.getLogger(ControladorSuscriptor.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
-        
-               
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -98,6 +94,7 @@ public class ControladorSuscriptor extends HttpServlet {
         Revista revista = (Revista) request.getSession().getAttribute("revista");
         PrintWriter out = response.getWriter();
         String user = request.getParameter("nombre");
+        String usuario = (String) request.getSession().getAttribute("nombre");
         try {                
             switch(accion){
                 case "Suscribirme":
@@ -109,7 +106,9 @@ public class ControladorSuscriptor extends HttpServlet {
                     if(verificador.equals("desactivado")){
                         llamadaSuscriptor.crearSuscripcion(suscriptor.getFecha_suscripcion(), suscriptor.getId_revista(), suscriptor.getNombre_usuario());
                         cant_suscriptores = revista.getNo_suscriptores() + 1;
-                        llamadaGeneral.modificarDatoUsuario("no_suscriptores", cant_suscriptores, revista.getTitulo_revista(), "Revista", "titulo_revista");                    
+                        llamadaGeneral.modificarDatoUsuario("no_suscriptores", cant_suscriptores, revista.getTitulo_revista(), "Revista", "titulo_revista"); 
+                        //efectua el primer pago    
+                        llamadaPago.crearPago(user, suscriptor.getId_revista(), revista.getCuota_suscripcion());
                         llamada.comprobacionTipoUsuario(user, request, response);
                     } else {
                         out.println("<script>");
@@ -141,9 +140,11 @@ public class ControladorSuscriptor extends HttpServlet {
                         out.println("window.location.href = 'Pago.jsp'");                        
                         out.println("</script>");                        
                     } else {
-                        int id = (int) request.getSession().getAttribute("id");                        
+                        int id = (int) request.getSession().getAttribute("id");
+                        int id_revista = (int) request.getSession().getAttribute("id_revista");
+                        llamadaSuscriptor.totalDiasSinPagar(usuario, id, llamadaGeneral, suscrip.getUltimo_pago(), fechaPago, id_revista);
                         llamadaGeneral.modificarDatoUsuario("ultimo_pago", suscrip.getUltimo_pago(), id, "Suscriptor", "id");
-                        llamada.comprobacionTipoUsuario(user, request, response);                                            
+                        llamada.comprobacionTipoUsuario(usuario, request, response);                           
                     }                     
             }
         } catch (SQLException ex) {

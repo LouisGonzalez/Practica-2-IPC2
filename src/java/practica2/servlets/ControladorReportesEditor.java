@@ -27,13 +27,15 @@ public class ControladorReportesEditor extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
+        String redireccion = request.getParameter("direccion");
         Date fechaInicial = null;
         Date fechaFinal = null;
         boolean verificador = true;
         session.setAttribute("fechaInicial", fechaInicial);
         session.setAttribute("fechaFinal", fechaFinal);
         session.setAttribute("verificar", verificador);
-        request.getRequestDispatcher("ReporteComentariosEditor.jsp").forward(request, response);
+        session.setAttribute("redireccion", redireccion);
+        request.getRequestDispatcher(redireccion).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -65,6 +67,8 @@ public class ControladorReportesEditor extends HttpServlet {
         String accion = request.getParameter("accion");
         String revista = request.getParameter("revista");
         HttpSession session = request.getSession();
+        String redireccion = (String) session.getAttribute("redireccion");
+        
         boolean verificador = true;
         switch(accion){
             case "Buscar":                
@@ -94,7 +98,7 @@ public class ControladorReportesEditor extends HttpServlet {
                 session.setAttribute("verificar", verificador);
                 session.setAttribute("fechaInicial", fechaInicial);
                 session.setAttribute("fechaFinal", fechaFinal);
-                request.getRequestDispatcher("ReporteComentariosEditor.jsp").forward(request, response);                             
+                request.getRequestDispatcher(redireccion).forward(request, response);                             
                 break;
         }
     }

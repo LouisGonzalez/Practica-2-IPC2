@@ -28,7 +28,7 @@ public class ReportesEditor {
         login = new Conexion();
         cn = login.getConnection();
         return cn;
-    }
+    }   
     
     public ArrayList<Atributos> ListarComentarios(Date fechaInicial, Date fechaFinal, String nombre_usuario) throws SQLException{
         ArrayList<Atributos> list = new ArrayList<>();

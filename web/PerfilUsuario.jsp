@@ -23,7 +23,7 @@
                     <ul>                
                         <li><a href="ControladorPerfil?usuario=<%=user%>">Ver Perfil</li>
                         <li><a href="PublicacionTitulos.jsp">Publicar mi primer revista</li>
-                        <li><a href="ListaRevistas.jsp">Suscribirme a una nueva revista</li>
+                        <li><a href="ControladorCategoria">Suscribirme a una nueva revista</li>
                     <li>asfdds<i class="fa fa-angle-down"></i>
                     <ul>    
                         <li>asd</li>
