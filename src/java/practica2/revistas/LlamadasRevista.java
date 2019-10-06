@@ -32,10 +32,10 @@ public class LlamadasRevista {
         return cn;
     }
     
-    public void crearRevista(String editor, String descripcion, String titulo_revista, int cuota_suscripcion) throws SQLException, IOException {
+    public void crearRevista(String editor, String descripcion, String titulo_revista, int cuota_suscripcion, Date fecha_creacion) throws SQLException, IOException {
         obtenerConexion();
         int cuota = (int) llamadaGeneral.mostrarDatos(1, "Cuota", "Cuota_global", "id");
-        String nuevaRevista = "INSERT INTO Revista VALUES ('"+0+"','"+editor+"','"+1+"','"+0+"','"+descripcion+"','"+titulo_revista+"','"+cuota_suscripcion+"','"+0+"','"+cuota+"')";
+        String nuevaRevista = "INSERT INTO Revista VALUES ('"+0+"','"+editor+"','"+1+"','"+0+"','"+descripcion+"','"+titulo_revista+"','"+cuota_suscripcion+"','"+0+"','"+cuota+"','"+fecha_creacion+"')";
         PreparedStatement declaracionRevista = cn.prepareStatement(nuevaRevista);
         declaracionRevista.executeUpdate();
         login.Desconectar();

@@ -8,9 +8,35 @@ import java.sql.Date;
  */
 public class Atributos {
     
-    private String nombre_usuario, comentario, titulo_revista;
+    private String nombre_usuario, comentario, titulo_revista, editor;
     private Date fecha_creado, ultimo_pago;
     private float total;
+    private int no_suscriptores, no_likes;
+
+    public int getNo_likes() {
+        return no_likes;
+    }
+
+    public void setNo_likes(int no_likes) {
+        this.no_likes = no_likes;
+    }
+
+    
+    public int getNo_suscriptores() {
+        return no_suscriptores;
+    }
+
+    public void setNo_suscriptores(int no_suscriptores) {
+        this.no_suscriptores = no_suscriptores;
+    }
+
+    public String getEditor() {
+        return editor;
+    }
+
+    public void setEditor(String editor) {
+        this.editor = editor;
+    }
 
     public float getTotal() {
         return total;

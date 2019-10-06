@@ -13,6 +13,9 @@
         <link href="estiloPerfil.css" rel="stylesheet">
         <%
         String user = (String) session.getAttribute("nombre");
+        String primero = "ReporteGananciasAdmin.jsp";
+        String segundo = "ReporteRevistasComentadas.jsp";
+        String tercero = "ReporteRevistasPopulares.jsp";
         %>
         User: <%=user%>
     </head>
@@ -30,7 +33,14 @@
                     <li><a href="ControladorCuota">Nueva cuota global</a></li>
                     <li><a href="ListadoRevistasAdmin.jsp">Listado revistas</a></li>
                     <li><a href="NuevaCategoria.jsp">Nueva categoria</a></li>
-                    <li>Reportes</li>
+                    <li>Reportes<i class="fa fa-angle-down">
+                            <ul>
+                                <li><a href="ControladorReportesAdmin?direccion=<%=primero%>">Reporte de revistas mas populares</a></li>
+                                <li><a href="ControladorReportesAdmin?direccion=<%=segundo%>">Reporte de revistas mas comentadas</a></li>
+                                <li><a href="ControladorReportesEditor?direccion=<%=tercero%>">Reporte de ganancias</a></li>
+                                
+                            </ul>
+                        </li>              
                 </ul>
             </div>
         </div>

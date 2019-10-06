@@ -108,7 +108,7 @@ public class ControladorSuscriptor extends HttpServlet {
                         cant_suscriptores = revista.getNo_suscriptores() + 1;
                         llamadaGeneral.modificarDatoUsuario("no_suscriptores", cant_suscriptores, revista.getTitulo_revista(), "Revista", "titulo_revista"); 
                         //efectua el primer pago    
-                        llamadaPago.crearPago(user, suscriptor.getId_revista(), revista.getCuota_suscripcion());
+                        llamadaPago.crearPago(user, suscriptor.getId_revista(), revista.getCuota_suscripcion(), suscriptor.getFecha_suscripcion());
                         llamada.comprobacionTipoUsuario(user, request, response);
                     } else {
                         out.println("<script>");

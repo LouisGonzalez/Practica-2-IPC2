@@ -20,6 +20,7 @@
             String user = (String) session.getAttribute("nombre");
             Date fechaInicial = (Date) session.getAttribute("fechaInicial");
             Date fechaFinal = (Date) session.getAttribute("fechaFinal");
+            session.setAttribute("pagina", "SubReporteLikesEditor.jsp");
         %>
     </head>
     <body>
@@ -53,17 +54,17 @@
                             ArrayList<Atributos> listar;
                             boolean verificador = (boolean) session.getAttribute("verificar");
                             if(verificador == false){
-                                listar = reportes.ListarLikes(fechaInicial, fechaFinal, (String) session.getAttribute("listaRev"), "titulo_revista");
+                                listar = reportes.listar(fechaInicial, fechaFinal, (String) session.getAttribute("listaRev"), "titulo_revista");
                             } else {
-                                listar = reportes.ListarLikes(fechaInicial, fechaFinal, user, "editor");
+                                listar = reportes.listar(fechaInicial, fechaFinal, user, "editor");
                             }
                         %>
                         <table>
                             <thead>
                                 <tr>
                                     <th>Titulo Revista:</th>
-                                    <th>Nombre de Usuario:</th>
-                                    <th>Fecha del like:</th>
+                                    <th>Editor:</th>
+                                    <th>No. likes:</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -73,8 +74,9 @@
                                 %>
                                 <tr>
                                     <td><%=atributo.getTitulo_revista()%></td>
-                                    <td><%=atributo.getNombre_usuario()%></td>
-                                    <td><%=atributo.getFecha_creado()%></td>
+                                    <td><%=atributo.getEditor()%></td>
+                                    <td><%=atributo.getNo_likes()%></td>
+                                    <td><a href="SubControladorReportesAdmin?titulo=<%=atributo.getTitulo_revista()%>">Ver likes</a></td>
                                 </tr>
                                     <%}
                                 }%>

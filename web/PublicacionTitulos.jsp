@@ -52,6 +52,9 @@
                                     <option value="<%=result.getString("descripcion")%>"><%=result.getString("descripcion")%></option><%                                        
                                     }%>                                    
                                 </select><br><br>
+                                <label for="creacion">Define la fecha de publicacion de su revista:</label>
+                                <input type="date" id="creacionRev" name="creacionRev" required/><br><br>
+                            
                                 <label for="descripcion">Agrega una descripcion sobre tu revista:</label>
                                 <textarea name="descripcion" rows="5" cols="85" spellcheck="true"></textarea><br><br>
                                 Al momento de publicar tu nueva revista pasaras tu cuenta pasara a ser<br>

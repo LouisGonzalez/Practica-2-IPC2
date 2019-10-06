@@ -20,6 +20,7 @@
             String user = (String) session.getAttribute("nombre");
             Date fechaInicial = (Date) session.getAttribute("fechaInicial");
             Date fechaFinal = (Date) session.getAttribute("fechaFinal");
+            session.setAttribute("pagina", "SubReporteSuscripcionesEditor.jsp");
         %>
     </head>
     <body>
@@ -53,18 +54,17 @@
                             ArrayList<Atributos> listar;
                             boolean verificador = (boolean) session.getAttribute("verificar");
                             if(verificador == false){
-                                listar = reportes.ListarSuscripciones(fechaInicial, fechaFinal, (String) session.getAttribute("listaRev"), "titulo_revista");
+                                listar = reportes.Listar(fechaInicial, fechaFinal, (String) session.getAttribute("listaRev"), "titulo_revista");
                             } else {
-                                listar = reportes.ListarSuscripciones(fechaInicial, fechaFinal, user, "editor");
+                                listar = reportes.Listar(fechaInicial, fechaFinal, user, "editor");
                             }
                         %>
                         <table>
                             <thead>
                                 <tr>
                                     <th>Titulo Revista:</th>
-                                    <th>Nombre de usuario:</th>
-                                    <th>Fecha de suscripcion:</th>
-                                    <th>Fecha del ultimo pago:</th>
+                                    <th>Editor:</th>
+                                    <th>No. suscriptores:</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -74,9 +74,9 @@
                                 %>
                                 <tr>
                                     <td><%=atributo.getTitulo_revista()%></td>
-                                    <td><%=atributo.getNombre_usuario()%></td>
-                                    <td><%=atributo.getFecha_creado()%></td>
-                                    <td><%=atributo.getUltimo_pago()%></td>
+                                    <td><%=atributo.getEditor()%></td>
+                                    <td><%=atributo.getNo_suscriptores()%></td>
+                                    <td><a href="SubControladorReportesAdmin?titulo=<%=atributo.getTitulo_revista()%>">Ver suscriptores</a></td>
                                 </tr>
                                     <%}
                                 }%>

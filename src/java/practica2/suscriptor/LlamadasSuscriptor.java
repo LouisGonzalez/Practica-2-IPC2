@@ -1,20 +1,16 @@
 package practica2.suscriptor;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.*;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import practica2.clases.Conexion;
-import practica2.clases.Llamadas;
 import practica2.general.LlamadasGenerales;
 /**
  *
@@ -28,6 +24,7 @@ public class LlamadasSuscriptor {
     private static final String ESTADO = "ACTIVADA";
     private static final String ACTUALIZACION_PAGOS = "UPDATE Pagos_suscriptor SET total_acumulado = ? WHERE id_revista = ? AND nombre_usuario = ?";
     private static final String TOTAL = "SELECT * FROM Pagos_suscriptor WHERE nombre_usuario = ? AND id_revista = ?";
+    private static final String NUEVO_PAGO = "INSERT INTO Pagos_suscriptor (id, nombre_usuario, id_revista, total_acumulado, fecha_pago) VALUES (?, ?, ?, ?, ?)";
     private final int PLAZO_DIAS = 30;
     
     
@@ -83,22 +80,25 @@ public class LlamadasSuscriptor {
         System.out.println(cuota);
         System.out.println(mesesTotales); 
         if(mesesTotales == 0){
-           obtenerConexion();
-           nuevoTotal = cuota + totalAcumulado;
-           PreparedStatement declaracionPago = cn.prepareStatement(ACTUALIZACION_PAGOS);
-           declaracionPago.setFloat(1, nuevoTotal);
-           declaracionPago.setInt(2, id_revista);
-           declaracionPago.setString(3, user);
-           declaracionPago.executeUpdate();
+           obtenerConexion(); 
+           PreparedStatement declaracionNPago = cn.prepareStatement(NUEVO_PAGO);
+           declaracionNPago.setInt(1, 0);
+           declaracionNPago.setString(2, user);
+           declaracionNPago.setInt(3, id_revista);
+           declaracionNPago.setFloat(4, cuota);
+           declaracionNPago.setDate(5, fechaPagar);
+           declaracionNPago.executeUpdate();
            login.Desconectar();
         } else if(mesesTotales > 0){
             obtenerConexion();
-            nuevoTotal = (mesesTotales * cuota) + totalAcumulado;
-            PreparedStatement declaracionPago = cn.prepareStatement(ACTUALIZACION_PAGOS);
-            declaracionPago.setFloat(1, nuevoTotal);
-            declaracionPago.setInt(2, id_revista);
-            declaracionPago.setString(3, user);
-            declaracionPago.executeUpdate();
+            nuevoTotal = (mesesTotales * cuota);     
+            PreparedStatement declaracionNPago = cn.prepareStatement(NUEVO_PAGO);
+            declaracionNPago.setInt(1, 0);
+            declaracionNPago.setString(2, user);
+            declaracionNPago.setInt(3, id_revista);
+            declaracionNPago.setFloat(4, nuevoTotal);
+            declaracionNPago.setDate(5, fechaPagar);
+            declaracionNPago.executeUpdate();            
             login.Desconectar();
         }
     }

@@ -90,7 +90,8 @@ public class ControladorPDF extends HttpServlet {
                     revistas.setDescripcion(request.getParameter("descripcion"));
                     revistas.setEditor((String)session.getAttribute("nombre"));
                     revistas.setCuota_suscripcion(Integer.parseInt(request.getParameter("cuota")));
-                    llamadas.crearRevista(revistas.getEditor(), revistas.getDescripcion(), revistas.getTitulo_revista(), revistas.getCuota_suscripcion());
+                    revistas.setFecha(Date.valueOf(request.getParameter("creacionRev")));
+                    llamadas.crearRevista(revistas.getEditor(), revistas.getDescripcion(), revistas.getTitulo_revista(), revistas.getCuota_suscripcion(), revistas.getFecha());
                     session.setAttribute("tituloRev", request.getParameter("titulo"));                    
                     revistas.setId((int) general.mostrarDatos(revistas.getTitulo_revista(), "id", "Revista", "titulo_revista"));
                     llamadaBloqueo.crearBloqueo(revistas.getId());

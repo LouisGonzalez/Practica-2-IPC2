@@ -11,10 +11,19 @@ public class Revista {
     
     private String editor, titulo_revista, descripcion;
     private int id_revista, no_titulo, cuota_suscripcion, id, titulos_subidos, no_suscriptores, no_likes, costo_mensual;
-    private Date fecha_creacion;
+    private Date fecha_creacion, fecha;
     private InputStream pdf;
     private byte[] archivoPdf;
 
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    
     public int getNo_likes() {
         return no_likes;
     }
