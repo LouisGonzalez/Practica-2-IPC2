@@ -135,7 +135,7 @@ public class ReporteGanancias {
             while(result.next()){
                 atributo = new AtributosAdmin();    
                 seteoFiltrado(result, titulo_revista);
-                float cuota = (float) llamadaGeneral.mostrarDatos(atributo.getTitulo_revista(), "costo_mensual", "Revista", "titulo_revista");
+                int cuota = (int) llamadaGeneral.mostrarDatos(atributo.getTitulo_revista(), "costo_mensual", "Revista", "titulo_revista");
                 int dias = (int) ((fechaActual.getTime() - fechaInicial.getTime())/86400000);
                 atributo.setTotal_cuota(cuota * dias);
                 list.add(atributo);

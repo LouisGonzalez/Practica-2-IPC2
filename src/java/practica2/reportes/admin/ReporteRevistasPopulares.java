@@ -13,7 +13,7 @@ public class ReporteRevistasPopulares {
     private static Connection cn;
     private static Conexion login;
     private AtributosAdmin atributo;
-    private static final String LLAMADA = "SELECT titulo_revista, COUNT(*) FROM Revista r JOIN Suscriptor s ON r.id = s.id_revista WHERE fecha_suscripcion <= ? GROUP BY titulo_revista ORDER BY COUNT(*) DESC";
+    private static final String LLAMADA = "SELECT titulo_revista, editor, COUNT(*) FROM Revista r JOIN Suscriptor s ON r.id = s.id_revista WHERE fecha_suscripcion <= ? GROUP BY titulo_revista ORDER BY COUNT(*) DESC";
     private static final String SEGUNDA_LLAMADA = "SELECT titulo_revista, editor, COUNT(*) FROM Revista r JOIN Suscriptor s ON r.id = s.id_revista WHERE fecha_suscripcion >= ? GROUP BY titulo_revista ORDER BY COUNT(*) DESC";
     private static final String TERCERA_LLAMADA = "SELECT titulo_revista, editor, COUNT(*) FROM Revista r JOIN Suscriptor s ON r.id = s.id_revista GROUP BY titulo_revista ORDER BY COUNT(*) DESC";
     private static final String CUARTA_LLAMADA = "SELECT titulo_revista, editor, COUNT(*) FROM Revista r JOIN Suscriptor s ON r.id = s.id_revista WHERE fecha_suscripcion >= ? AND fecha_suscripcion <= ? GROUP BY titulo_revista ORDER BY COUNT(*) DESC";

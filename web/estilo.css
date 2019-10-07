@@ -1,50 +1,101 @@
-body{  
-    font-family: Arial;
-    background-image: url(fondo.jpg);
-    background-size: 100% 100%;
-    background-attachment: fixed;
-
+:root {
+  --input-padding-x: 1.5rem;
+  --input-padding-y: .75rem;
 }
 
-#main-container{
-    margin: 150px;
-    width: 600px;
-    background-color: rgb(14, 7, 94);
-    color: #FFFFFF;
-    padding: 20px;
-
+body {
+  background: #007bff;
+  background: linear-gradient(to right, #0062E6, #33AEFF);
 }
 
-h1{
-    font-weight: bold;
-    text-align: center;
-    color: #FFF87F;
-    font-size: 50px !important;
-    text-shadow: 4px, 4px, 5px rgba(0,0,0,0,5); 
-    font-variant: all-petite-caps;
+.card-signin {
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
 }
 
-input {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 2px solid #FFF87F;
-    border-radius: 4px;
-    background-color: rgb(240, 235, 230);
-    color: rgb(14, 11, 11);  
-    font-size: 20px;
-  }
+.card-signin .card-title {
+  margin-bottom: 2rem;
+  font-weight: 300;
+  font-size: 1.5rem;
+}
 
-  
-  button{
-    text-decoration: none;
-    padding: 15px;
-    font-weight: 600;
-    font-size: 20px;
-    color: black;
-    background-color: #FFF87F;
-    border-radius: 6px;
-    border: 2px solid #0016b0;
-  }
+.card-signin .card-body {
+  padding: 2rem;
+}
+
+.form-signin {
+  width: 100%;
+}
+
+.form-signin .btn {
+  font-size: 80%;
+  border-radius: 5rem;
+  letter-spacing: .1rem;
+  font-weight: bold;
+  padding: 1rem;
+  transition: all 0.2s;
+}
+
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-label-group input {
+  height: auto;
+  border-radius: 2rem;
+}
+
+.form-label-group>input,
+.form-label-group>label {
+  padding: var(--input-padding-y) var(--input-padding-x);
+}
+
+.form-label-group>label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: #495057;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
+}
+
+.form-label-group input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input:-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-moz-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::placeholder {
+  color: transparent;
+}
+
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+  padding-bottom: calc(var(--input-padding-y) / 3);
+}
+
+.form-label-group input:not(:placeholder-shown)~label {
+  padding-top: calc(var(--input-padding-y) / 3);
+  padding-bottom: calc(var(--input-padding-y) / 3);
+  font-size: 12px;
+  color: #777;
+}
  

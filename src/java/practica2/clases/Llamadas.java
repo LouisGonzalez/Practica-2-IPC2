@@ -33,9 +33,9 @@ public class Llamadas {
     }
     
     //metodo para insertar un nuevo usuario dentro del sistema 
-    public void insertarUsuario(String nombre, String apellido, String userName, String password, String tipoUsuario, int edad, Date nacimiento) throws SQLException{
+    public void insertarUsuario(String nombre, String apellido, String userName, String password, String tipoUsuario, Date nacimiento) throws SQLException{
         obtenerConexion();
-        String nuevoUsuario = "INSERT INTO Usuarios VALUES ('"+0+"','"+nombre+"','"+apellido+"','"+userName+"','"+password+"','"+tipoUsuario+"','"+null+"','"+edad+"','"+nacimiento+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        String nuevoUsuario = "INSERT INTO Usuarios VALUES ('"+0+"','"+nombre+"','"+apellido+"','"+userName+"','"+password+"','"+tipoUsuario+"','"+null+"','"+nacimiento+"','"+null+"','"+null+"','"+null+"','"+null+"')";
         PreparedStatement declaracionUsuarios = cn.prepareStatement(nuevoUsuario);
         declaracionUsuarios.executeUpdate();   
         login.Desconectar();
@@ -111,6 +111,8 @@ public class Llamadas {
             request.getRequestDispatcher("PerfilEditor.jsp").forward(request, response);
         } else if(captura.equals("usuario")){
             request.getRequestDispatcher("PerfilUsuario.jsp").forward(request, response);
+        } else if(captura.equals("Administrador")){
+            request.getRequestDispatcher("PerfilAdministrador.jsp").forward(request, response);
         }
     }
     

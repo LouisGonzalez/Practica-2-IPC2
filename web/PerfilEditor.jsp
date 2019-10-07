@@ -6,11 +6,14 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimun-scale=1.0">     
         <title>JSP Page</title>
-        <link href="estiloPerfil.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/estilosBoots.css" rel="stylesheet">
+        <link rel='stylesheet' href='estilo.css'>  
         <%
         String user = (String)session.getAttribute("nombre");
         String primero = "ReporteComentariosEditor.jsp";
@@ -18,46 +21,77 @@
         String tercero = "ReporteLikesEditor.jsp";
         String cuarto = "ReporteGananciasEditor.jsp";
         %>
-        <p>UserName: <%=user%></p>
     </head>
     <body>
-        <STYLE>A {text-decoration: none;} </STYLE>
-        <form action="ControladorPerfil" method="POST">
-            <div class="container">
-                <div class="tutorial">
-                    <p>asfsdafasdf</p>
-                    <ul>
-                        
-                        <li><a href="ControladorPerfil?usuario=<%=user%>" target="blank">Ver Perfil</a></li>
-                        <li><a href="EleccionRevista.jsp">Publicar una nueva revista</li>
-                        <li><a href="ListaMisTitulos.jsp">Ver mis revistas subidas</li>
-                        <li><a href="ControladorCategoria">Suscribirme a una nueva revista</li>
-                        <li><a href="ListaRevistasSuscritas.jsp">Ver mis revistas suscritas</li>
-                        <li>Reportes<i class="fa fa-angle-down">
-                            <ul>
-                                <li><a href="ControladorReportesEditor?direccion=<%=primero%>">Reporte de comentarios</a></li>
-                                <li><a href="ControladorReportesEditor?direccion=<%=segundo%>">Reporte de suscripciones</a></li>
-                                <li><a href="ControladorReportesEditor?direccion=<%=tercero%>">Reporte de likes</a></li>
-                                <li><a href="ControladorReportesEditor?direccion=<%=cuarto%>">Reporte de ganancias</a></li>
-                            </ul>
-                        </li>
-                        <li>asda<i class="fa fa-angle-down"></i>
-                            <ul>
-                                <li>CSS <span> 12 available</li>
-                                    <li>html <span> 9 available</li>                        
-                            </ul>                    
-                        </li>                   
-                    </ul>
-                    <div class="slider">
-                        <div class="information">               
-                            <h1>Este es el perfil de un editor</h1>
-                            <p>UserName: <%=user%></p>
-                            <img src="ControladorImagen?us=${user}" width="250" height="230">
-                        </div>
-                    </div>
-                </div>
-            </div>    
-        </form>
+       <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+                <div class="container">
+                    <a class="navbar-brand" href="#">
+                        <img src="ControladorImagen?us=<%=user%>" alt="" class="rounded-circle" width="50">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav">                   
+        <li class="nav-item active">
+            <a class="nav-link" href="ControladorPerfil?usuario=<%=user%>"><h5>Bienvenido: <%=user%></h5></a>         
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        
+        
+         <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Revistas
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="EleccionRevista.jsp">Publicar una nueva revista</a>
+          <a class="dropdown-item" href="ListaMisTitulos.jsp">Ver mis revistas publicadas</a>
+          <a class="dropdown-item" href="ControladorCategoria">Suscribirme a una nueva revista</a>
+          <a class="dropdown-item" href="ListaRevistasSuscritas.jsp">Ver mis revistas sucristas</a>
+       
+        </div>
+      </li> 
+     
+        
+        
+        
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Reportes
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="ControladorReportesEditor?direccion=<%=primero%>">Reporte de comentarios</a>
+          <a class="dropdown-item" href="ControladorReportesEditor?direccion=<%=segundo%>">Reporte de suscripciones</a>
+          <a class="dropdown-item" href="ControladorReportesEditor?direccion=<%=tercero%>">Reporte de likes</a>
+          <a class="dropdown-item" href="ControladorReportesEditor?direccion=<%=cuarto%>">Reporte de ganancias</a>
+       
+        </div>
+      </li> 
+     
+        
+        
+     <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Opciones
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="EleccionCampoUsuario.jsp">Modificar datos</a>
+          <a class="dropdown-item" href="FotoPerfilUsuario.jsp">Cambiar mi foto</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="ControladorSesion">Salir</a>
+        </div>
+      </li> 
+      </ul>
+    </div>
+  </div>
+</nav>
+        </header>
+        <section class="main container"></section>
+        <footer></footer>
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
     </body>
 </html>
 

@@ -1,12 +1,30 @@
-//FALTA CREAR LA TABLA USUARIOS PERO LO DEMAS CHIDO Xd
+CREATE DATABASE Revistas;
 
+use Revistas;
+
+CREATE TABLE Usuarios (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nombres VARCHAR(40) NOT NULL,
+	apellidos VARCHAR(40) NOT NULL,
+	nombre_usuario VARCHAR(40) NOT NULL,
+	password VARCHAR(20) NOT NULL,
+	tipo_usuario VARCHAR(40) NOT NULL,
+	foto_perfil LONGBLOB,
+	fecha_nacimiento DATE NOT NULL,
+	lugar_estudio VARCHAR(60) NOT NULL,
+	hobbies VARCHAR(100) NOT NULL,
+	temas_interes VARCHAR(200) NOT NULL,
+	descripcion VARCHAR(200) NOT NULL
+);
+
+ALTER TABLE Usuarios ADD UNIQUE (nombre_usuario);
 
 CREATE TABLE Revista (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	editor VARCHAR(40) NOT NULL,
 	titulos_subidos INT NOT NULL,
 	no_suscriptores INT NOT NULL,
-	descripcion VARCHAR(100) NOT NULL,                             //hacer la descripcion unica	
+	descripcion VARCHAR(100) NOT NULL,                        	
 	titulo_revista VARCHAR(40) NOT NULL,
 	cuota_suscripcion INT NOT NULL,
 	no_likes INT NOT NULL,
@@ -16,12 +34,13 @@ CREATE TABLE Revista (
 	FOREIGN KEY (editor) REFERENCES Usuarios(nombre_usuario)
 );
 
+ALTER TABLE Revista ADD UNIQUE (titulo_revista);
+
 CREATE TABLE Suscriptor (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	nombre_usuario VARCHAR(40) NOT NULL,
 	id_revista INT NOT NULL,
 	fecha_suscripcion DATE NOT NULL,
-	estado_suscripcion VARCHAR(40) NOT NULL,
 	ultimo_pago DATE NOT NULL,
 	INDEX (nombre_usuario),
 	INDEX (id_revista),
@@ -29,22 +48,24 @@ CREATE TABLE Suscriptor (
 	FOREIGN KEY (id_revista) REFERENCES Revista(id)
 );
 
-CREATE TABLE Editor (
-	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	editor VARCHAR(40) NOT NULL,
-	id_revista INT NOT NULL,
-	INDEX (editor),
-	INDEX (id_revista),
-	FOREIGN KEY (editor) REFERENCES Usuarios(nombre_usuario),
-	FOREIGN KEY (id_revista) REFERENCES Revista(id)
-);
+
 
 CREATE TABLE Categorias (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	descripcion VARCHAR(70) NOT NULL
 );
 
-ALTER TABLE Categorias ADD UNIQUE (descripcion);	
+ALTER TABLE Categorias ADD UNIQUE (descripcion);
+
+CREATE TABLE Categorias_revista (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	id_revista INT NOT NULL,
+	categoria VARCHAR(50) NOT NULL,
+	INDEX (id_revista),
+	INDEX (categoria),
+	FOREIGN KEY (id_revista) REFERENCES Revista(id),
+	FOREIGN KEY (categoria) REFERENCES Categorias(descripcion)
+);	
 
 CREATE TABLE Tags (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -74,7 +95,12 @@ CREATE TABLE Comentarios (
 	INDEX (nombre_usuario),
 	INDEX (id_revista),
 	FOREIGN KEY (nombre_usuario) REFERENCES Usuarios(nombre_usuario),
-	FOREIGN KEY (id_revista) REFERENCES Revista(id),
+	FOREIGN KEY (id_revista) REFERENCES Revista(id)
+);
+
+CREATE TABLE Cuota_global (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	Cuota INT NOT NULL
 );
 
 CREATE TABLE Likes (
@@ -85,26 +111,11 @@ CREATE TABLE Likes (
 	INDEX (nombre_usuario),
 	INDEX (id_revista),
 	FOREIGN KEY (nombre_usuario) REFERENCES Usuarios(nombre_usuario),
-	FOREIGN KEY (id_revista) REFERENCES Revista(id),
-);
-
-CREATE TABLE Costo_mes (
-	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	costo INT NOT NULL,
-	id_revista INT NOT NULL,
-	INDEX (id_revista),
 	FOREIGN KEY (id_revista) REFERENCES Revista(id)
 );
 
-CREATE TABLE Pago_usuario (							//HAY QUE ELIMINAR ESTA TABLA 
-	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	nombre_usuario VARCHAR(40) NOT NULL,
-	id_costo INT NOT NULL,
-	INDEX (id_costo),
-	INDEX (nombre_usuario),
-	FOREIGN KEY (nombre_usuario) REFERENCES Usuarios(nombre_usuario),
-	FOREIGN KEY (id_costo) REFERENCES Costo_mes(id)	
-);
+
+
 
 CREATE TABLE Tags_revistas (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -116,43 +127,12 @@ CREATE TABLE Tags_revistas (
 	FOREIGN KEY (id_revista) REFERENCES Revista(id)
 );
 
-CREATE TABLE Categorias_revista (
-	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	id_revista INT NOT NULL,
-	categoria VARCHAR(50) NOT NULL,
-	INDEX (id_revista),
-	INDEX (categoria),
-	FOREIGN KEY (id_revista) REFERENCES Revista(id),
-	FOREIGN KEY (categoria) REFERENCES Categorias(descripcion)
-);
-
-CREATE TABLE Falta_pago (
-	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	nombre_usuario VARCHAR(40) NOT NULL,
-	id_revista INT NOT NULL,
-	id_titulo INT NOT NULL,
-	id_costo INT NOT NULL,
-	INDEX (nombre_usuario),
-	INDEX (id_revista),
-	INDEX (id_titulo),
-	INDEX (id_costo),
-	FOREIGN KEY (nombre_usuario) REFERENCES Usuarios(nombre_usuario),
-	FOREIGN KEY (id_revista) REFERENCES Revista(id),
-	FOREIGN KEY (id_titulo) REFERENCES Titulos_revistas(id),
-	FOREIGN KEY (id_costo) REFERENCES Costo_mes(id)
-);
-
-CREATE TABLE Cuota_global (
-	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	Cuota INT NOT NULL
-);
-
 CREATE TABLE Bloqueos (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	id_revista INT NOT NULL,
-	bloqueo_likes VARCHAR(10) NOT NULL,
-	bloqueo_comentarios VARCHAR(10) NOT NULL,
-	bloqueo_suscripcion VARCHAR(10) NOT NULL,
+	bloqueo_likes VARCHAR(20) NOT NULL,
+	bloqueo_comentarios VARCHAR(20) NOT NULL,
+	bloqueo_suscripcion VARCHAR(20) NOT NULL,
 	INDEX (id_revista),
 	FOREIGN KEY (id_revista) REFERENCES Revista(id)
 );

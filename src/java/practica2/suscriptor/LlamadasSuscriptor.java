@@ -20,7 +20,7 @@ public class LlamadasSuscriptor {
     
     private static Connection cn;
     private static Conexion login;
-    private static final String NUEVO_SUSCRIPTOR = "INSERT INTO Suscriptor (id, nombre_usuario, id_revista, fecha_suscripcion, estado_suscripcion, ultimo_pago) VALUES(?, ?, ?, ?, ?, ?)";
+    private static final String NUEVO_SUSCRIPTOR = "INSERT INTO Suscriptor (id, nombre_usuario, id_revista, fecha_suscripcion, ultimo_pago) VALUES(?, ?, ?, ?, ?)";
     private static final String ESTADO = "ACTIVADA";
     private static final String ACTUALIZACION_PAGOS = "UPDATE Pagos_suscriptor SET total_acumulado = ? WHERE id_revista = ? AND nombre_usuario = ?";
     private static final String TOTAL = "SELECT * FROM Pagos_suscriptor WHERE nombre_usuario = ? AND id_revista = ?";
@@ -42,8 +42,7 @@ public class LlamadasSuscriptor {
         declaracionInsertar.setString(2, usuario);
         declaracionInsertar.setInt(3, id_revista);
         declaracionInsertar.setDate(4, fecha_creacion);
-        declaracionInsertar.setString(5, ESTADO);
-        declaracionInsertar.setDate(6, fecha_creacion);
+        declaracionInsertar.setDate(5, fecha_creacion);
         declaracionInsertar.executeUpdate();
     }
     

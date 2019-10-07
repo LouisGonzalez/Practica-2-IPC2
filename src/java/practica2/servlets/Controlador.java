@@ -89,8 +89,8 @@ public class Controlador extends HttpServlet {
                     Part part = request.getPart("fotoPerfil");
                     InputStream input = part.getInputStream();
                     user.setFoto(input);
-                    dao.agregarFoto(user, user.getNombre_usuario());
-                    request.getRequestDispatcher("CaracteristicasUsuario.jsp").forward(request, response);
+                    dao.agregarFoto(user, (String) session.getAttribute("nombre"));
+                    llamada.comprobacionTipoUsuario((String)session.getAttribute("nombre"), request, response);
                     break;
                 case "Registrar":
                     user.setNombres(request.getParameter("nombres"));
@@ -98,10 +98,9 @@ public class Controlador extends HttpServlet {
                     user.setNombre_usuario(request.getParameter("username"));
                     user.setPassword(request.getParameter("pass"));
                     user.setTipo_usuario(request.getParameter("tipoUsuario"));
-                    user.setEdad(Integer.parseInt(request.getParameter("edad")));
                     user.setNacimiento(Date.valueOf(request.getParameter("nacimiento")));
                     session.setAttribute("nombre", user.getNombre_usuario());
-                    if(user.getNombres() == null || user.getApellidos() == null || user.getNombre_usuario() == null || user.getPassword() == null || user.getEdad() == 0 || user.getTipo_usuario() == null || user.getNacimiento() == null){
+                    if(user.getNombres() == null || user.getApellidos() == null || user.getNombre_usuario() == null || user.getPassword() == null || user.getTipo_usuario() == null || user.getNacimiento() == null){
                         request.getRequestDispatcher("NuevaCuenta.jsp").forward(request, response);
                     } else {
                         dao.agregarUsuario(user, request, response); 
@@ -120,7 +119,7 @@ public class Controlador extends HttpServlet {
                     llamada.modificarDatoUsuario("temas_interes", user.getTemas_interes(), (String)session.getAttribute("nombre"), "Usuarios", "nombre_usuario");
                     llamada.modificarDatoUsuario("descripcion", user.getDescripcion(), (String)session.getAttribute("nombre"), "Usuarios", "nombre_usuario");
                     llamada.modificarDatoUsuario("lugar_estudio", user.getLugar_estudio(), (String)session.getAttribute("nombre"), "Usuarios", "nombre_usuario");
-                    llamada.comprobacionTipoUsuario((String)session.getAttribute("nombre"), request, response);
+                    request.getRequestDispatcher("FotoPerfilUsuario.jsp").forward(request, response);
                     break;
                 default:
                     request.getRequestDispatcher("NuevaCuenta.jsp").forward(request, response);

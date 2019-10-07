@@ -57,8 +57,8 @@ public class UsuarioDAO {
     
     public void agregarUsuario(Usuario user, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         try {
-            llamada.insertarUsuario(user.getNombres(), user.getApellidos(), user.getNombre_usuario(), user.getPassword(), user.getTipo_usuario(), user.getEdad(), user.getNacimiento());
-            request.getRequestDispatcher("FotoPerfilUsuario.jsp").forward(request, response);
+            llamada.insertarUsuario(user.getNombres(), user.getApellidos(), user.getNombre_usuario(), user.getPassword(), user.getTipo_usuario(), user.getNacimiento());
+            request.getRequestDispatcher("CaracteristicasUsuario.jsp").forward(request, response);
         } catch (SQLException ex) {
             request.getRequestDispatcher("NuevaCuenta.jsp").forward(request, response);
         }

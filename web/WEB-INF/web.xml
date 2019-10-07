@@ -76,6 +76,14 @@
         <servlet-name>SubControladorReportesAdmin</servlet-name>
         <servlet-class>practica2.servlets.SubControladorReportesAdmin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorSesion</servlet-name>
+        <servlet-class>practica2.servlets.ControladorSesion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControladorRedireccion</servlet-name>
+        <servlet-class>practica2.servlets.ControladorRedireccion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controlador</servlet-name>
         <url-pattern>/Controlador</url-pattern>
@@ -151,6 +159,14 @@
     <servlet-mapping>
         <servlet-name>SubControladorReportesAdmin</servlet-name>
         <url-pattern>/SubControladorReportesAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorSesion</servlet-name>
+        <url-pattern>/ControladorSesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorRedireccion</servlet-name>
+        <url-pattern>/ControladorRedireccion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
